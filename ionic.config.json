@@ -1,0 +1,8 @@
+{
+  "name": "GetStarted",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular",
+  "pro_id": "8c5a4c0b"
+}
