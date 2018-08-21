@@ -14,16 +14,12 @@ import {Firebase} from '@ionic-native/firebase'
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
-export const firebaseConfig = {
-  apiKey: "",
-  authDomain: "myben-24883.firebaseapp.com",
-  databaseURL: "https://myben-24883.firebaseio.com",
-  projectId: "myben-24883",
-  storageBucket: "myben-24883.appspot.com",
-  messagingSenderId: "411362945334"
-};
+import { environment } from '../environments/environments';
+
 
 @NgModule({
   declarations: [
@@ -36,9 +32,11 @@ export const firebaseConfig = {
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+    AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
+    AngularFireStorageModule // imports firebase/storage only needed for storage features
   ],
   bootstrap: [IonicApp],
   entryComponents: [
