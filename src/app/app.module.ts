@@ -16,7 +16,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
-export config = {
+export const firebaseConfig = {
   apiKey: "",
   authDomain: "myben-24883.firebaseapp.com",
   databaseURL: "https://myben-24883.firebaseio.com",
@@ -35,7 +35,10 @@ export config = {
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -49,7 +52,8 @@ export config = {
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    Firebase
+    Firebase,
+    AngularFireDatabase
   ]
 })
 export class AppModule {}
